@@ -5,7 +5,42 @@ import com.beust.klaxon.int
 import org.json.XML
 import java.io.File
 
+/*
+Sample cpd xml
+<pmd-cpd>
+   <duplication lines="486" tokens="2504">
+      <file line="6651"
+            path="/Users/naveen/abc.java"/>
+      <file line="5396"
+            path="/Users/naveen/dfe.java"/>
+      <codefragment><![CDATA[            obj.setId(null);
+            saveList.add(obj);
+          }
+        }
+
+      }
+  }
+
+ */
+
+/*
+Command line options
+old CPD file :- "/Users/naveen/build/reports/cpd/cpdCheck-old.xml"
+new CPD file :-  "/Users/naveen/build/reports/cpd/cpdCheck.xml"
+filter Path :- "/core"
+ */
 fun main(args: Array<String>) {
+    if (args.count() < 2) {
+        val commandLineOptions = """
+Requires 3 parameters oldcpdfile.xml newcpdfile.xml FileFilterPath
+example  "/Users/naveen/build/reports/cpd/cpdCheck-old.xml"
+         "/Users/naveen/build/reports/cpd/cpdCheck.xml"
+         "/core"
+                    """
+        println(commandLineOptions)
+        return
+    }
+
     data class CPDFile(val name: String, val path: String, val line: Int)
     data class CPD(val codefragment: String, val tokens: Int?, val lines: Int,
                    val fileInfo: Pair<CPDFile, CPDFile>)
