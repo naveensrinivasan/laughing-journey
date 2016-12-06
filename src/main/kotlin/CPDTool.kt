@@ -1,3 +1,7 @@
+@file:JvmName("CPDTool")
+
+package com.naveensrinivasan
+
 import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
@@ -29,7 +33,8 @@ old CPD file :- "/Users/naveen/build/reports/cpd/cpdCheck-old.xml"
 new CPD file :-  "/Users/naveen/build/reports/cpd/cpdCheck.xml"
 filter Path :- "/core"
  */
-fun main(args: Array<String>) {
+
+fun  main(args: Array<String>) {
     if (args.count() < 2) {
         val commandLineOptions = """
 Requires 3 parameters oldcpdfile.xml newcpdfile.xml FileFilterPath
