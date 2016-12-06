@@ -82,8 +82,7 @@ example  "/Users/naveen/build/reports/cpd/cpdCheck-old.xml"
 
     val subtract = newCPD.toHashSet().subtract(originialCPD)
     if (subtract.count() > 0) {
-        val diff = subtract.map { it.fileInfo.toString() }.reduce { s1, s2 -> s1 + s2 }
-        System.err.println(diff)
+        subtract.forEach { System.err.println(it) }
         System.exit(1)
     }
 }
